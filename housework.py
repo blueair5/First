@@ -37,11 +37,17 @@ class Matrix():
 
 def composite(matrix1,matrix2): #矩阵的复合
      n=matrix1.shape
-     matrix3=np.matmul(matrix1,matrix2)
+     matrix3=np.dot(matrix1,matrix2)
+     print(matrix3)
+     print("复合后的关系是：{",end="")
      for i in range(0,n[0]):
           for j in range(0,n[0]):
-               if matrix3[i][j]>1:
+               if matrix3[i][j]==1:
+                    print("<"+str(i+1)+","+str(j+1)+">",end="")
+               elif matrix3[i][j]>1:
                     matrix3[i][j]=1
+                    print("<"+str(i+1)+","+str(j+1)+">",end="")
+     print("}")
      print("复合矩阵是：")
      print(matrix3)
 
@@ -70,7 +76,6 @@ def symmetry(matrix):
                     sign1=sign1+1
                elif matrix[i][j]!=matrix[j][i]:
                     sign2=sign2+1
-     print(sign1,sign2)
      if sign1==0 and sign2>0:
           print("反对称")
      elif sign1>0 and sign2==0:
@@ -85,8 +90,12 @@ def symmetry(matrix):
 
 matrix1=Matrix()
 matrix1.create_matrix()
-matrix1=matrix1.get()
-symmetry(matrix1)
+matrix3=matrix1.get()
+matrix2=Matrix()
+matrix2.create_matrix()
+matrix4=matrix2.get()
+composite(matrix3,matrix4)
+symmetry(matrix3)
 
 
 
