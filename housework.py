@@ -84,18 +84,39 @@ def symmetry(matrix):
           print("既不对称，也不反对称")
      elif sign1==0 and sign2==0:
           print("即对称也反对称")
-          
+def transform(matrix):
+     n=matrix.shape
+     s=0
+     for i in range(0,n[0]):
+          if s>0:
+               break
+          for j in range(0,n[0]):
+               if s>0:
+                    break
+               if matrix[i][j]==1:
+                    for k in range(0,n[0]):
+                         if matrix[j][k]==1:
+                              if matrix[i][k]==0:
+                                   print("不满足传递性")
+                                   s=s+1
+                                   break
+
+     if s==0:
+          print("满足传递性")
 
 
 
+     
 matrix1=Matrix()
 matrix1.create_matrix()
 matrix3=matrix1.get()
-matrix2=Matrix()
+'''matrix2=Matrix()
 matrix2.create_matrix()
 matrix4=matrix2.get()
 composite(matrix3,matrix4)
-symmetry(matrix3)
+symmetry(matrix3)'''
+transform(matrix3)
+
 
 
 
